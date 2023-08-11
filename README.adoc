@@ -1,0 +1,61 @@
+= Debezium database migration
+
+This repository covers two use cases.
+
+. Data migration between SQL Server 2019 and Oracle Database using Chanage Data Capture with Debezium and Strimzi
+. Data transformation XML/JSON with Camel and the ability to communicate with REST and SOAP webservices. 
+
+== Data Migration
+
+image::images/database-integration.jpg[database integration using debezium]
+
+== System integration
+
+image::images/system-integration.jpg[integration using camel kafka and quarkus]
+
+
+== Install
+
+All the proof of concept it's inside Openshift.
+
+NOTE: I decided to remove Operators logic from the playbooks because it looks to broke whenever there is a new version of a Operator the playbooks starts to fail (It's annoying).
+
+=== Pre requirements
+
+. Openshift
+. AMQ Streams Operator
+. AMQ Grafana Operator
+. Red Hat Camel K Operator
+. Red Hat OpenShift distributed tracing platform
+
+=== Parameters
+
+[options="header"]
+|=======================
+| Parameter      | Example Value                                      | Definition
+| tkn     | sha256~vFanQbthlPKfsaldJT3bdLXIyEkd7ypO_XPygY1DNtQ | access token for a user with cluster-admin privileges
+| server    | https://api.mycluster.opentlc.com:6443             | OpenShift Cluster API URL
+|=======================
+
+=== Deploy using Ansible
+
+```
+export tkn=sha256~x
+export server=https://api.clust2er-6x8wc.6x8wc.sandbox773.opentlc.com:6443
+
+ansible-playbook -e token=${tkn} -e server=${server} playbook.yml
+```
+
+== Development 
+
+=== Pre requirements
+
+. JDK 11+
+. Quarkus CLI
+. Docker / Podman
+
+To run the apps, inside each project run:
+
+    quarkus dev
+
+
