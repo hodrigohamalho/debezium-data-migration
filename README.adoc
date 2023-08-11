@@ -43,6 +43,7 @@ NOTE: I decided to remove Operators logic from the playbooks because it looks to
 export tkn=sha256~x
 export server=https://api.clust2er-6x8wc.6x8wc.sandbox773.opentlc.com:6443
 
+cd ansible
 ansible-playbook -e token=${tkn} -e server=${server} playbook.yml
 ```
 
