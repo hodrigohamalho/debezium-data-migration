@@ -13,6 +13,9 @@ image::images/database-integration.jpg[database integration using debezium]
 
 image::images/system-integration.jpg[integration using camel kafka and quarkus]
 
+== Kafka Ecosystem detail
+
+image::images/kafka-ecosystem.jpg[kafka ecosystem detail]
 
 == Install
 
