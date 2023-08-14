@@ -36,12 +36,20 @@
       include_role:
         name: monitoring
     
-    - name: Include Applications
-      include_role:
-        name: apps
+    # - name: Include Applications
+    #   include_role:
+    #     name: apps
 
-    - name: Telemetry
-      include_role:
-        name: telemetry
+    # - name: Telemetry
+    #   include_role:
+    #     name: telemetry
+
+    # - name: Include Databases Role
+    #   include_role:
+    #     name: databases
+
+    # - name: Include Debezium
+    #   include_role:
+    #     name: debezium
 
     
