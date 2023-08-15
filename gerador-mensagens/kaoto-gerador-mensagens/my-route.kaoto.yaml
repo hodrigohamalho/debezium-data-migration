@@ -1,0 +1,12 @@
+- route:
+    id: route-2193
+    from:
+      uri: timer:kaoto-gerador-mensagens
+      steps:
+      - set-body:
+          simple: '{"nome": "Vinicius-${random(1,999)}","id": ${random(1,99999)},
+            "origem": "kaoto"}'
+      - to:
+          uri: kafka:eventos
+          parameters:
+            brokers: localhost:32772
