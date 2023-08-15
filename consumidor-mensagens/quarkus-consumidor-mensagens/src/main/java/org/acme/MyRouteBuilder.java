@@ -2,10 +2,13 @@ package org.acme;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.xml.datatype.DatatypeFactory;
 
 import org.acme.backport.Confirmation;
+import org.acme.backport.Registration;
 import org.apache.camel.Message;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
+import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -20,6 +23,37 @@ public class MyRouteBuilder extends org.apache.camel.builder.RouteBuilder{
 
     @Override
     public void configure() throws Exception {
+
+        from("kafka:eventos?groupId={{consumer-group}}")
+            .log("Mensagem do Kafka: ${body}")
+            .unmarshal(new JacksonDataFormat(Evento.class))
+
+            .process(e -> {
+                Message m = e.getIn();
+                Evento r = (Evento) m.getBody();
+
+                RegistrationRequest soaprequest = new RegistrationRequest();
+                soaprequest.setEvent(r.getId());
+                soaprequest.getContent().add(r.getNome());
+                soaprequest.setDate(DatatypeFactory.newInstance().newXMLGregorianCalendar());
+                
+                m.setBody(soaprequest);
+            })
+            .to("direct:soapRequest")
+            .process(e -> {
+                Message m = e.getIn();
+                RegistrationResponse soapresponse = (RegistrationResponse) m.getBody();
+    
+                Confirmation c = new Confirmation();
+                c.setEvent(soapresponse.getConfirmation().get(0).getEvent().toString());
+                c.setGuest(soapresponse.getConfirmation().get(0).getGuest().toString());
+    
+                m.setBody(c);
+            })
+            .marshal(new JacksonDataFormat())
+            .to("kafka:respostas");
+
+
         JaxbDataFormat df = new JaxbDataFormat();
         df.setContextPath("https.www_herongyang_com.service");
    
@@ -42,18 +76,7 @@ public class MyRouteBuilder extends org.apache.camel.builder.RouteBuilder{
             .log("SOAP response")
             .log(body().toString())
 
-            .unmarshal(df)
-
-            .process(e -> {
-                Message m = e.getIn();
-                RegistrationResponse soapresponse = (RegistrationResponse) m.getBody();
-
-                Confirmation c = new Confirmation();
-                c.setEvent(soapresponse.getConfirmation().get(0).getEvent().toString());
-                c.setGuest(soapresponse.getConfirmation().get(0).getGuest().toString());
-
-                m.setBody(c);
-            });
+            .unmarshal(df);
     }
     
 }

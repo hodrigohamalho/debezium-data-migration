@@ -87,6 +87,18 @@ public class CamelRoutes extends RouteBuilder {
         //     m.setBody(c);
         // })
         .to("direct:soapRequest")
+
+
+        .process(e -> {
+            Message m = e.getIn();
+            RegistrationResponse soapresponse = (RegistrationResponse) m.getBody();
+
+            Confirmation c = new Confirmation();
+            c.setEvent(soapresponse.getConfirmation().get(0).getEvent().toString());
+            c.setGuest(soapresponse.getConfirmation().get(0).getGuest().toString());
+
+            m.setBody(c);
+        })
         .marshal(new JacksonDataFormat())
         .log("REST 2 SOAP : JSON response")
         .log(body().toString())

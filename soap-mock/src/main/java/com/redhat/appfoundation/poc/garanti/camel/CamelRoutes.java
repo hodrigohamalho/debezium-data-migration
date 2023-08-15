@@ -1,6 +1,8 @@
 package com.redhat.appfoundation.poc.garanti.camel;
 
 
+import java.util.Random;
+
 import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.camel.LoggingLevel;
@@ -12,6 +14,8 @@ import https.www_herongyang_com.service.RegistrationResponse.Confirmation;
 @ApplicationScoped
 public class CamelRoutes extends RouteBuilder {
 
+    public static Random random = new Random();
+
     @Override
     public void configure() {
 
@@ -21,10 +25,10 @@ public class CamelRoutes extends RouteBuilder {
         .log("CXF Mock : Received request ")
         .log(LoggingLevel.INFO, body().toString())
         .process(e -> {
-            RegistrationResponse r= new RegistrationResponse();
+            RegistrationResponse r = new RegistrationResponse();
             Confirmation c = new Confirmation();
-            c.setGuest("Jeremy");
-            c.setEvent("456");
+            c.setGuest("Ramalho");
+            c.setEvent(""+Math.abs(random.nextInt()));
             r.getConfirmation().add(c);
             e.getMessage().setBody(r);
         })
