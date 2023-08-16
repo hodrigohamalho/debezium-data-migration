@@ -28,13 +28,13 @@
           metadata:
             name: "{{ namespace }}"
 
-    - name: Include AMQ Streams
-      include_role:
-        name: streams
+    # - name: Include AMQ Streams
+    #   include_role:
+    #     name: streams
 
-    - name: Include Monitoring
-      include_role:
-        name: monitoring
+    # - name: Include Monitoring
+    #   include_role:
+    #     name: monitoring
     
     # - name: Include Applications
     #   include_role:
@@ -44,9 +44,9 @@
     #   include_role:
     #     name: telemetry
 
-    # - name: Include Databases Role
-    #   include_role:
-    #     name: databases
+    - name: Include Databases Role
+      include_role:
+        name: databases
 
     # - name: Include Debezium
     #   include_role:
