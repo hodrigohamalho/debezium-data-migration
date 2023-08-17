@@ -6,7 +6,9 @@
   <artifactId>soap-mock</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
+    <camel.rest.version>3.18.5</camel.rest.version>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
+    <cxf.version>3.5.3.redhat-00033</cxf.version>
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -15,8 +17,6 @@
     <quarkus.platform.version>2.13.5.SP1-redhat-00002</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-    <camel.rest.version>3.18.5</camel.rest.version>
-    <cxf.version>3.5.3.redhat-00033</cxf.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -44,11 +44,11 @@
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-log</artifactId>
-    </dependency>         
+    </dependency>
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-direct</artifactId>
-    </dependency>              
+    </dependency>
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-bean-validator</artifactId>
@@ -56,7 +56,7 @@
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-jaxb</artifactId>
-    </dependency>    
+    </dependency>
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-bean</artifactId>
@@ -64,8 +64,7 @@
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-xml-io-dsl</artifactId>
-    </dependency>  
-
+    </dependency>
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-cxf-soap</artifactId>
@@ -74,13 +73,12 @@
       <groupId>org.apache.ws.security</groupId>
       <artifactId>wss4j</artifactId>
       <version>1.6.19.redhat-2</version>
-    </dependency>      
+    </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-ws-security</artifactId>
       <version>3.5.3.redhat-00033</version>
     </dependency>
-
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
@@ -101,20 +99,18 @@
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-micrometer</artifactId>
     </dependency>
-
-    <!-- >>Openshift -->
-    <!--
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-openshift</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-kubernetes-config</artifactId>
-    </dependency>    
-    -->
-    <!-- Openshift<< -->
-
+      <artifactId>quarkus-opentelemetry</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel.quarkus</groupId>
+      <artifactId>camel-quarkus-opentelemetry</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
@@ -125,7 +121,6 @@
       <artifactId>camel-quarkus-junit5</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
   <repositories>
     <repository>
@@ -210,23 +205,23 @@
         <artifactId>cxf-codegen-plugin</artifactId>
         <version>${cxf.version}</version>
         <executions>
-            <execution>
-                <id>generate-sources</id>
-                <phase>generate-sources</phase>
-                <configuration>
-                    <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
-                    <wsdlOptions>
-                        <wsdlOption>
-                            <wsdl>${basedir}/src/main/resources/wsdl/herongyang-registration.wsdl</wsdl>
-                        </wsdlOption>
-                    </wsdlOptions>
-                </configuration>
-                <goals>
-                    <goal>wsdl2java</goal>
-                </goals>
-            </execution>
+          <execution>
+            <id>generate-sources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>wsdl2java</goal>
+            </goals>
+            <configuration>
+              <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
+              <wsdlOptions>
+                <wsdlOption>
+                  <wsdl>${basedir}/src/main/resources/wsdl/herongyang-registration.wsdl</wsdl>
+                </wsdlOption>
+              </wsdlOptions>
+            </configuration>
+          </execution>
         </executions>
-    </plugin>            
+      </plugin>
     </plugins>
   </build>
   <profiles>
