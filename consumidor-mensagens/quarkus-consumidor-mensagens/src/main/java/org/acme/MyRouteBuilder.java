@@ -1,7 +1,5 @@
 package org.acme;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.xml.datatype.DatatypeFactory;
 
 import org.acme.backport.Confirmation;
@@ -14,6 +12,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import https.www_herongyang_com.service.RegistrationRequest;
 import https.www_herongyang_com.service.RegistrationResponse;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class MyRouteBuilder extends org.apache.camel.builder.RouteBuilder{

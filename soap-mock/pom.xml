@@ -6,17 +6,17 @@
   <artifactId>soap-mock</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
-    <camel.rest.version>3.18.5</camel.rest.version>
-    <compiler-plugin.version>3.8.1</compiler-plugin.version>
-    <cxf.version>3.5.3.redhat-00033</cxf.version>
+    <camel.rest.version>4.0.0</camel.rest.version>
+    <cxf.version>4.0.2</cxf.version>
+    <compiler-plugin.version>3.11.0</compiler-plugin.version>
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-    <quarkus.platform.group-id>com.redhat.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>2.13.5.SP1-redhat-00002</quarkus.platform.version>
+    <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+    <quarkus.platform.version>3.2.4.Final</quarkus.platform.version>
     <skipITs>true</skipITs>
-    <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
+    <surefire-plugin.version>3.0.0</surefire-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -68,16 +68,6 @@
     <dependency>
       <groupId>org.apache.camel.quarkus</groupId>
       <artifactId>camel-quarkus-cxf-soap</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.ws.security</groupId>
-      <artifactId>wss4j</artifactId>
-      <version>1.6.19.redhat-2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-ws-security</artifactId>
-      <version>3.5.3.redhat-00033</version>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>

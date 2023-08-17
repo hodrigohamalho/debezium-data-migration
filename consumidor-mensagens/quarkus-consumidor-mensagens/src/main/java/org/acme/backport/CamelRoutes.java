@@ -1,19 +1,16 @@
 package org.acme.backport;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.xml.datatype.DatatypeFactory;
 
 import org.apache.camel.Message;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.cxf.common.message.CxfConstants;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.model.dataformat.JaxbDataFormat;
 import org.apache.camel.model.rest.RestBindingMode;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import https.www_herongyang_com.service.RegistrationRequest;
 import https.www_herongyang_com.service.RegistrationResponse;
+import jakarta.enterprise.context.ApplicationScoped;
 
 
 /*

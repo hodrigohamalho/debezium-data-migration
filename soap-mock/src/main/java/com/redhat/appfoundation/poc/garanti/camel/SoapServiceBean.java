@@ -1,10 +1,12 @@
 package com.redhat.appfoundation.poc.garanti.camel;
 
-import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.camel.component.cxf.common.DataFormat;
 import org.apache.camel.component.cxf.jaxws.*;
-import javax.inject.Named;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
+
 import javax.xml.namespace.QName;
 
 @Named("registration")

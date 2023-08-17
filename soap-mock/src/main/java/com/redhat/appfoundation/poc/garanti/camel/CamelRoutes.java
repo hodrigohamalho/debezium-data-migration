@@ -3,13 +3,13 @@ package com.redhat.appfoundation.poc.garanti.camel;
 
 import java.util.Random;
 
-import javax.enterprise.context.ApplicationScoped;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
 import https.www_herongyang_com.service.RegistrationResponse;
 import https.www_herongyang_com.service.RegistrationResponse.Confirmation;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class CamelRoutes extends RouteBuilder {
