@@ -64,14 +64,19 @@
     name: mssql-server-linux
     namespace: '{{ namespace }}'
     api_version: apps/v1
-  register: r_k8s_info
-  until: r_k8s_info.resources[0].status.readyReplicas | default(0) > 0
+  register: mssql_resource
+  until: >-
+    (mssql_resource.resources is defined)
+    and (mssql_resource.resources|length>0)
+    and (mssql_resource.resources[0].status is defined)
+    and (mssql_resource.resources[0].status.readyReplicas is defined)
+    and (mssql_resource.resources[0].status.readyReplicas > 0)
   retries: 30
   delay: 10
 
 - name: Configure CDC in Database
   command: >-
-    oc -n {{ namepsace }} exec deployment/mssql-server-linux --
+    oc -n {{ namespace }} exec deployment/mssql-server-linux --
     /opt/mssql-tools/bin/sqlcmd -S mssql-server-linux -U sa -P 'Password!' -i /opt/workshop/data.sql
 
 - name: Deploy MyPHP Legacy App

@@ -15,7 +15,7 @@
               metadata:
                 name: prometheusdb
               spec:
-                storageClassName: gp2
+                storageClassName: gp3-csi
                 resources:
                   requests:
                     storage: 20Gi
