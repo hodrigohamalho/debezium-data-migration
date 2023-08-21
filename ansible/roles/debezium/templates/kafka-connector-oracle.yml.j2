@@ -19,6 +19,6 @@ spec:
     database.password: dbz
     database.dbname: ORAPOC
     database.pdb.name: ORAPOCPDB
-    database.history.kafka.bootstrap.servers: my-cluster-kafka-bootstrap:9092
+    database.history.kafka.bootstrap.servers: {{ kafka_cluster }}-kafka-bootstrap:9092
     database.history.kafka.topic: oracle19-history
     table.include.list: ot.keys, PMGHDREE

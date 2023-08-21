@@ -74,7 +74,7 @@
   retries: 30
   delay: 10
 
-- name: Configure CDC in Database
+- name: Load initial data into the database
   command: >-
     oc -n {{ namespace }} exec deployment/mssql-server-linux --
     /opt/mssql-tools/bin/sqlcmd -S mssql-server-linux -U sa -P 'Password!' -i /opt/workshop/data.sql

@@ -58,11 +58,17 @@
   args:
     executable: /bin/bash
 
-- name: Create topic events in Kafka
+- name: Create topic eventos in Kafka
   k8s:
     state: present
     namespace: '{{ namespace }}'
-    resource_definition: "{{ lookup('template', 'events-topic.yml.j2') }}"
+    resource_definition: "{{ lookup('template', 'eventos-topic.yml.j2') }}"
+
+- name: Create topic respostas in Kafka
+  k8s:
+    state: present
+    namespace: '{{ namespace }}'
+    resource_definition: "{{ lookup('template', 'respostas-topic.yml.j2') }}"
 
 - name: Install Kafka UI
   k8s:

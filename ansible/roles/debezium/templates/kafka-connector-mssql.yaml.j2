@@ -1,9 +1,9 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaConnector
 metadata:
-  name: debezium-connector
+  name: debezium-mssql-connector
   labels:
-    strimzi.io/cluster: debezium
+    strimzi.io/cluster: debezium-connect-cluster
 spec:
   class: io.debezium.connector.sqlserver.SqlServerConnector
   tasksMax: 1
@@ -15,7 +15,7 @@ spec:
     database.dbname: "InternationalDB"
     database.server.name: "mssql-server-linux"
     table.whitelist: "dbo.Orders"
-    database.history.kafka.bootstrap.servers: "demo-kafka-bootstrap:9092"
+    database.history.kafka.bootstrap.servers: {{ kafka_cluster }}-kafka-bootstrap:9092
     database.history.kafka.topic: "dbhistory.internationaldb"
     key.converter: "org.apache.kafka.connect.json.JsonConverter"
     key.converter.schemas.enable: "false"

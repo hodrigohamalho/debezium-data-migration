@@ -3,9 +3,9 @@ kind: KafkaTopic
 metadata:
   labels:
     strimzi.io/cluster: '{{ kafka_cluster }}'
-  name: events
+  name: respostas
 spec:
   config: {}
   partitions: 3
   replicas: 2
-  topicName: events
+  topicName: respostas

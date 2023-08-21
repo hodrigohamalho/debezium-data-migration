@@ -7,7 +7,7 @@ metadata:
 spec:
   version: 3.1.0
   replicas: 1
-  bootstrapServers: {{ kafka_cluster_name }}-kafka-bootstrap:9092
+  bootstrapServers: my-source-cluster-kafka-bootstrap:9092
   metricsConfig:
     type: jmxPrometheusExporter
     valueFrom:
@@ -25,4 +25,4 @@ spec:
     config.storage.replication.factor: -1
     offset.storage.replication.factor: -1
     status.storage.replication.factor: -1
-  image: quay.io/hodrigohamalho/debezium-container-for-oracle:1.9.7
+  image: 'quay.io/redhatintegration/rhi-cdc-connect:2022-Q4'
