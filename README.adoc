@@ -9,11 +9,11 @@ This repository covers two use cases.
 
 image::images/database-integration.jpg[database integration using debezium]
 
-1. SQL Server is running with AGENT ENABLED. Debezium is running as a connector in Kafka Connect, connected to the SQL Server listen to all events in the `Orders` table.
+1. SQL Server is running with `AGENT ENABLED`. Debezium is running as a connector in `Kafka Connect`, connected to the `SQL Server` listen to all events in the `Orders` table.
 
-2. Capture all events from SQL Server and send it to Kafka in JSON format, storing in the `mssql-server-linux.dbo.Orders` topic.
+2. Capture all events from `SQL Server` and send it to `Kafka` in `JSON` format, storing in the `mssql-server-linux.dbo.Orders` topic.
 
-3. Camel application that consume events from the `mssql-server-linux.dbo.Orders` topic, and insert into Oracle database.
+3. Camel application that consume events from the `mssql-server-linux.dbo.Orders` topic, and insert into `Oracle database`.
 
 == System integration
 
