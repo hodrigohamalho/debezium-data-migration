@@ -62,4 +62,10 @@ To run the apps, inside each project run:
 
     quarkus dev
 
+=== Connecting locally into Openshift databases
+
+    oc port-forward <oracle-pod-name> 1521:1521
+    oc port-forward <mssql-server-pod-name> 1433:1433
+
+So use your favorite SQL browser to dig into the data.
 
