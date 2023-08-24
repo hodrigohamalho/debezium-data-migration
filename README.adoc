@@ -19,19 +19,13 @@ image::images/database-integration.jpg[database integration using debezium]
 
 image::images/system-integration.jpg[integration using camel kafka and quarkus]
 
-1. X
+- 1. Aplicação gera mensagens, em JSON, a cada 1s e envia para o tópico `eventos`.
 
-2. Y
+- 2 e 5. Consumidor do tópico `eventos`. Recebe as mensagens em JSON, converte para XML e faz uma requisição SOAP. Ao receber a resposta em XML, converte para JSON e a envia para o tópico `respostas`. 
 
-3. Z
+- 3 e 4. Web Service construído com Camel e Quarkus que recebe mensagem e gera uma resposta simples para todas as requisições.
 
-4. D
-
-5. X 
-
-6. OK
-
-7. OK
+- 6. Aplicação consumidora do tópico `respostas`. Ao acessar a página disponibilizada nesta aplicação, é gerado um stream enviando envia as mensagens lidas do tópico. Esta aplicação Quarkus envia as mensagens para o browser utilizando SSE (server-sent events)
 
 == Kafka Ecosystem detail
 
