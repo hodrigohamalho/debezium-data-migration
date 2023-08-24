@@ -45,11 +45,16 @@ NOTE: I decided to remove Operators logic from the playbooks because it looks to
 
 === Pre requirements
 
-. Openshift
+. Red Hat Openshift Platform
+
+==== Openshift Operators 
+
 . AMQ Streams Operator
 . AMQ Grafana Operator
 . Red Hat Camel K Operator
 . Red Hat OpenShift distributed tracing platform
+
+image::images/installed-operators.png[installed operators]
 
 === Parameters
 
