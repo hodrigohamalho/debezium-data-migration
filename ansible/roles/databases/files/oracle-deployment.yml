@@ -2,6 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: oracle-19c-orapoc
+labels:
+    app: oracle-19c-orapoc
+    app.kubernetes.io/component: oracle-19c-orapoc
+    app.kubernetes.io/instance: oracle-19c-orapoc
+    app.kubernetes.io/name: oracle-19c-orapoc
+    app.kubernetes.io/part-of: cdc
 spec:
   replicas: 1
   selector:

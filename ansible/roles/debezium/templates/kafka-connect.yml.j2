@@ -4,6 +4,12 @@ metadata:
   name: debezium-connect-cluster
   annotations:
     strimzi.io/use-connector-resources: "true"
+  labels:
+    app: debezium-connect-cluster
+    app.kubernetes.io/component: debezium-connect-cluster
+    app.kubernetes.io/instance: debezium-connect-cluster
+    app.kubernetes.io/name: debezium-connect-cluster
+    app.kubernetes.io/part-of: cdc
 spec:
   version: 3.1.0
   replicas: 1

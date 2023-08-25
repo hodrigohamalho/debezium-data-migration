@@ -1,45 +1,29 @@
-- name: Gerador Mensagens
+- name: Message Generator
   k8s:
     state: present
     namespace: '{{ namespace }}'
     resource_definition: "{{ lookup('file', 'gerador-mensagens.yml') }}"
-- name: Consumidor Mensagens
+
+- name: Message Consumer
   k8s:
     state: present
     namespace: '{{ namespace }}'
     resource_definition: "{{ lookup('file', 'consumidor-mensagens.yml') }}"
+
 - name: SOAP Mock
   k8s:
     state: present
     namespace: '{{ namespace }}'
     resource_definition: "{{ lookup('file', 'soap-mock.yml') }}"
-- name: Consumidor Respostas
+
+- name: Response Consumer
   k8s:
     state: present
     namespace: '{{ namespace }}'
     resource_definition: "{{ lookup('file', 'consumidor-respostas.yml') }}"
 
-
-# - name: Create MYSQL Database
-#   k8s:
-#     state: present
-#     namespace: '{{ namespace }}'
-#     resource_definition: "{{ lookup('file', 'mysql.yml') }}"
-
-# - name: Create Order Producer Application
-#   k8s:
-#     state: present
-#     namespace: '{{ namespace }}'
-#     resource_definition: "{{ lookup('file', 'order-producer.yml') }}"
-
-# - name: Create Order Artemis Consumer Application
-#   k8s:
-#     state: present
-#     namespace: '{{ namespace }}'
-#     resource_definition: "{{ lookup('file', 'order-artemis-consumer.yml') }}"
-
-# - name: Create Order Producer and Consumer Application
-#   k8s:
-#     state: present
-#     namespace: '{{ namespace }}'
-#     resource_definition: "{{ lookup('file', 'order-consumer-producer.yml') }}"
+- name: Create Oracle Sink Connector
+  k8s:
+    state: present
+    namespace: '{{ namespace }}'
+    resource_definition: "{{ lookup('file', 'kafka-connector-camel-sql.yml') }}"

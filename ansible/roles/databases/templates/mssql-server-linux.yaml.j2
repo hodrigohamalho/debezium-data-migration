@@ -2,6 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mssql-server-linux
+labels:
+    app: mssql-server-linux
+    app.kubernetes.io/component: mssql-server-linux
+    app.kubernetes.io/instance: mssql-server-linux
+    app.kubernetes.io/name: mssql-server-linux
+    app.kubernetes.io/part-of: cdc
 spec:
   replicas: 1
   selector:

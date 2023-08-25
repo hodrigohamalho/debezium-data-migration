@@ -84,3 +84,9 @@
     state: present
     namespace: '{{ namespace }}'
     resource_definition: "{{ lookup('template', 'apache-php-app.yaml.j2') }}"
+
+- name: Create Orders Table in Oracle Database
+  k8s:
+    state: present
+    namespace: '{{ namespace }}'
+    resource_definition: "{{ lookup('template', 'configmap-init-oracle-sql.yaml.j2') }}"
