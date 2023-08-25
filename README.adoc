@@ -19,13 +19,13 @@ image::images/database-integration.jpg[database integration using debezium]
 
 image::images/system-integration.jpg[integration using camel kafka and quarkus]
 
-- 1. Aplicação gera mensagens, em JSON, a cada 1s e envia para o tópico `eventos`.
+1. Generate JSON messages in each 1 seg and send through the `eventos` topic in `Kafka`.
 
-- 2 e 5. Consumidor do tópico `eventos`. Recebe as mensagens em JSON, converte para XML e faz uma requisição SOAP. Ao receber a resposta em XML, converte para JSON e a envia para o tópico `respostas`. 
+2. 2 e 5. Consume `JSON` messages from the topic `eventos`, transform it to `XML` and do a SOAP request. Receive a response from the SOAP service, transfor it back to `JSON` and send to the topic `respostas` in `Kafka`.
 
-- 3 e 4. Web Service construído com Camel e Quarkus que recebe mensagem e gera uma resposta simples para todas as requisições.
+3. 3 e 4. SOAP Web service built using Camel Quarkus.
 
-- 6. Aplicação consumidora do tópico `respostas`. Ao acessar a página disponibilizada nesta aplicação, é gerado um stream enviando envia as mensagens lidas do tópico. Esta aplicação Quarkus envia as mensagens para o browser utilizando SSE (server-sent events)
+4. 6. `Quarkus` application that consume messages from the topic `respostas` and show it in a webpage that is receiving live events using `SSE` (server-sent events).
 
 == Kafka Ecosystem detail
 
@@ -49,6 +49,77 @@ NOTE: I decided to remove Operators logic from the playbooks because it looks to
 . Red Hat OpenShift distributed tracing platform
 
 image::images/installed-operators.png[installed operators]
+
+==== Ports in use
+
+[cols="1,1"]
+|===
+|consumidor-respostas
+|8080/TCP
+
+|debezium-connect-cluster-connect-api
+|8083/TCP
+
+|grafana-alert
+|9094/TCP
+
+|grafana-operator-controller-manager-metrics-service
+|8443/TCP
+
+|grafana-service
+|3000/TCP
+
+|jaeger-agent
+|5775/UDP,5778/TCP,6831/UDP,6832/UDP
+
+|jaeger-collector
+|9411/TCP,14250/TCP,14267/TCP,14268/TCP,4317/TCP,4318/TCP
+
+|jaeger-collector-headless
+|9411/TCP,14250/TCP,14267/TCP,14268/TCP,4317/TCP,4318/TCP   
+
+|jaeger-query
+|443/TCP,16685/TCP
+
+|kafka-ui
+|8080/TCP
+
+|mssql-server-linux
+|1433/TCP
+
+|my-apache-php-app
+|80/TCP
+
+|my-source-cluster-kafka-0
+|9094/TCP
+
+|my-source-cluster-kafka-1
+|9094/TCP
+
+|my-source-cluster-kafka-2
+|9094/TCP
+
+|my-source-cluster-kafka-bootstrap
+|9091/TCP,9092/TCP,9093/TCP
+
+|my-source-cluster-kafka-brokers
+|9090/TCP,9091/TCP,9092/TCP,9093/TCP
+
+|my-source-cluster-kafka-external-bootstrap
+|9094/TCP
+
+|my-source-cluster-zookeeper-client
+|2181/TCP
+
+|my-source-cluster-zookeeper-nodes
+|2181/TCP,2888/TCP,3888/TCP
+
+|oracle-19c-orapoc
+|1521/TCP,5500/TCP
+
+|soapmock
+|80/TCP
+|===
 
 === Parameters
 
