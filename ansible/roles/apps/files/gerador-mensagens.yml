@@ -28,7 +28,7 @@ spec:
       containers:
         - name: gerador-mensagens
           image: >-
-            quay.io/vflorent/gerador-mensagens-jvm
+            quay.io/hodrigohamalho/gerador-mensagens-jvm
           ports:
             - containerPort: 8080
               protocol: TCP

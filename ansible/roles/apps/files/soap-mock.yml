@@ -28,7 +28,7 @@ spec:
       containers:
         - name: soapmock
           image: >-
-            quay.io/vflorent/soap-mock-jvm
+            quay.io/hodrigohamalho/soap-mock-jvm
           ports:
             - containerPort: 8080
               protocol: TCP

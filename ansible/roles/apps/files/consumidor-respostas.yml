@@ -28,7 +28,7 @@ spec:
       containers:
         - name: consumidor-respostas
           image: >-
-            quay.io/vflorent/consumidor-respostas-jvm
+            quay.io/hodrigohamalho/consumidor-respostas-jvm
           ports:
             - containerPort: 8080
               protocol: TCP
