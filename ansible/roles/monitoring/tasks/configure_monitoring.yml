@@ -74,3 +74,9 @@
     state: present
     namespace: '{{ namespace }}'
     resource_definition: "{{ lookup('file', 'grafana-kafka-mirror-maker-dashboard.yml') }}"
+
+- name: Evaluate Camel Monitoring
+  k8s:
+    state: present
+    namespace: '{{ namespace }}'
+    resource_definition: "{{ lookup('file', 'camel-dashboard.yml') }}"

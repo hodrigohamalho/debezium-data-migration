@@ -2787,7 +2787,7 @@ spec:
           "30d"
         ]
       },
-      "timezone": "",
+      "timezone": "browser",
       "title": "Strimzi Kafka",
       "uid": "86cc98e66c294b299b37102f0cc74ead",
       "version": 2

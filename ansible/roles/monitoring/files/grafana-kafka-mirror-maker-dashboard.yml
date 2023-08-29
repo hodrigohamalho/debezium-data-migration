@@ -2033,7 +2033,7 @@ spec:
           "30d"
         ]
       },
-      "timezone": "",
+      "timezone": "browser",
       "title": "Strimzi Kafka Mirror Maker 2",
       "version": 6
     }
