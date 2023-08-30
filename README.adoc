@@ -130,6 +130,13 @@ image::images/installed-operators.png[installed operators]
 | server    | https://api.mycluster.opentlc.com:6443             | OpenShift Cluster API URL
 |=======================
 
+=== Logging
+
+If you want to see log aggregation Openshift feature, install this following the https://docs.openshift.com/container-platform/4.13/logging/cluster-logging-deploying.html#cluster-logging-deploying[documentation].
+
+
+image::images/log-aggregation.png[log aggregation].
+
 === Deploy using Ansible
 
 ```
