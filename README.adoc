@@ -31,6 +31,45 @@ image::images/system-integration.jpg[integration using camel kafka and quarkus]
 
 image::images/kafka-ecosystem.jpg[kafka ecosystem detail]
 
+== Logging
+
+If you want to see log aggregation Openshift feature, install this following the https://docs.openshift.com/container-platform/4.13/logging/cluster-logging-deploying.html#cluster-logging-deploying[documentation].
+
+image::images/log-aggregation.png[logging aggregation]
+
+== Monitoring 
+
+https://docs.openshift.com/container-platform/4.13/monitoring/monitoring-overview.html[Official Documentation].
+
+image::images/monitoring-topology.png[monitoring topology]
+
+On this poc we use the `Openshift Monitoring` Stack and a custom `Grafana` to use our own dashboards.
+
+Custom dashboards deployed
+
+. Apache Camel
+. Strimzi Kafka
+. Strimzi Kafka Connect
+. Strimgi Kafka Mirror Maker 2
+
+image::images/monitoring-grafana-dashboards.png[dashboards]
+
+Sample dashboard of Kafka
+
+image::images/monitoring-grafana-dashboards-sample.png[dashboards]
+
+Also for browsing Kafka specific components we are using `Kafka UI`.
+
+image::images/kafka-ui.png[kafka-ui]
+
+== Tracing
+
+For tracing we are using the `Openshift Distributed Tracing` Operator with `Jaeger`.
+
+image::images/tracing.png[kafka-ui]
+
+image::images/tracing-1.png[kafka-ui]
+
 == Install
 
 All the proof of concept it's inside Openshift.
@@ -129,37 +168,6 @@ image::images/installed-operators.png[installed operators]
 | tkn     | sha256~vFanQbthlPKfsaldJT3bdLXIyEkd7ypO_XPygY1DNtQ | access token for a user with cluster-admin privileges
 | server    | https://api.mycluster.opentlc.com:6443             | OpenShift Cluster API URL
 |=======================
-
-=== Logging
-
-If you want to see log aggregation Openshift feature, install this following the https://docs.openshift.com/container-platform/4.13/logging/cluster-logging-deploying.html#cluster-logging-deploying[documentation].
-
-image::images/log-aggregation.png[logging aggregation]
-
-=== Monitoring 
-
-https://docs.openshift.com/container-platform/4.13/monitoring/monitoring-overview.html[Official Documentation].
-
-image::images/monitoring-topology.png[monitoring topology]
-
-On this poc we use the Openshift Monitoring Stack and a custom Grafana to use our own dashboards.
-
-Custom dashboards deployed
-
-. Apache Camel
-. Strimzi Kafka
-. Strimzi Kafka Connect
-. Strimgi Kafka Mirror Maker 2
-
-image::images/monitoring-grafana-dashboards.png[dashboards]
-
-Sample dashboard of Kafka
-
-image::images/monitoring-grafana-dashboards-sample.png[dashboards]
-
-Also for browsing Kafka specific components we are using Kafka UI.
-
-image::images/kafka-ui.png[kafka-ui]
 
 === Deploy using Ansible
 
