@@ -134,8 +134,32 @@ image::images/installed-operators.png[installed operators]
 
 If you want to see log aggregation Openshift feature, install this following the https://docs.openshift.com/container-platform/4.13/logging/cluster-logging-deploying.html#cluster-logging-deploying[documentation].
 
+image::images/log-aggregation.png[logging aggregation]
 
-image::images/log-aggregation.png[log aggregation].
+=== Monitoring 
+
+https://docs.openshift.com/container-platform/4.13/monitoring/monitoring-overview.html[Official Documentation].
+
+image::images/monitoring-topology.png[monitoring topology]
+
+On this poc we use the Openshift Monitoring Stack and a custom Grafana to use our own dashboards.
+
+Custom dashboards deployed
+
+. Apache Camel
+. Strimzi Kafka
+. Strimzi Kafka Connect
+. Strimgi Kafka Mirror Maker 2
+
+image::images/monitoring-grafana-dashboards.png[dashboards]
+
+Sample dashboard of Kafka
+
+image::images/monitoring-grafana-dashboards-sample.png[dashboards]
+
+Also for browsing Kafka specific components we are using Kafka UI.
+
+image::images/kafka-ui.png[kafka-ui]
 
 === Deploy using Ansible
 
