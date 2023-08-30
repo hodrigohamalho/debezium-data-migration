@@ -13,6 +13,7 @@ metadata:
     app.kubernetes.io/part-of: aplicacoes
     app.openshift.io/runtime: camel
     app.openshift.io/runtime-namespace: poc
+    app-with-metrics: quarkus-app
 spec:
   replicas: 1
   selector:

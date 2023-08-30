@@ -52,11 +52,15 @@ Custom dashboards deployed
 . Strimzi Kafka Connect
 . Strimgi Kafka Mirror Maker 2
 
-image::images/monitoring-grafana-dashboards.png[dashboards]
+image::images/monitoring-grafana-dashboards.png[dashboard list]
 
 Sample dashboard of Kafka
 
-image::images/monitoring-grafana-dashboards-sample.png[dashboards]
+image::images/monitoring-grafana-dashboards-sample.png[Kafka Dashboard]
+
+Sample dashboard of Camel
+
+image::images/camel-monitoring.png[Camel Dashboard]
 
 Also for browsing Kafka specific components we are using `Kafka UI`.
 
