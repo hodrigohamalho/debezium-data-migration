@@ -5,21 +5,23 @@ metadata:
 spec:
   source:
     ref:
-      kind: Kamelet
-      apiVersion: camel.apache.org/v1alpha1
-      name: kafka-source
+      kind: KafkaTopic
+      apiVersion: kafka.strimzi.io/v1beta1
+      name: mssql-server-linux.dbo.Orders
     properties:
-      bootstrapServers: "my-source-cluster-kafka-bootstrap.poc.svc:9092"
-      topic: mssql-server-linux.dbo.Orders
+      brokers: "my-source-cluster-kafka-bootstrap.poc.svc:9092"
   sink:
     ref:
       kind: Kamelet
       apiVersion: camel.apache.org/v1alpha1
       name: oracle-database-sink
     properties:
-      serverName: oracle-19c-orapoc
+      serverName: "oracle-19c-orapoc"
       serverPort: 1521
+      databaseName: "ORAPOCPDB"
       username: ot
       password: Orcl1234
-      databaseName: ORAPOCPDB
-      query: INSERT INTO ot.orders (order_id,type,flavor,quantity,price,sender_user)      VALUES(:#OrderId,:#OrderType,:#OrderItemName,:#Quantity,:#Price,:#OrderUser)
+      query: INSERT INTO ot.orders (order_id,type,flavor,quantity,price,sender_user) VALUES(:#OrderId,:#OrderType,:#OrderItemName,:#Quantity,:#Price,:#OrderUser)
+  integration:
+    dependencies:
+      - mvn:com.oracle.database.jdbc:ojdbc8:23.2.0.0
