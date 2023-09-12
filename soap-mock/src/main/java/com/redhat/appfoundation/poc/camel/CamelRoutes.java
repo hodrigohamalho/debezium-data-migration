@@ -1,4 +1,4 @@
-package com.redhat.appfoundation.poc.garanti.camel;
+package com.redhat.appfoundation.poc.camel;
 
 
 import java.util.Random;
